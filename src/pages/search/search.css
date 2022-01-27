@@ -1,0 +1,7 @@
+.container {
+  height: 661px;
+}
+.search {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,80 @@
+.header {
+  color: #fff;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: scroll;
+  -ms-overflow-style: none; /*ie and edge*/
+  scrollbar-width: none; /*firefox*/
+}
+/* hide scrollbar*/
+.header::-webkit-scrollbar {
+  display: none;
+}
+
+.header_icons {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+.header_icon {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 80px;
+  color: #fff;
+}
+a {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 80px;
+  color: #fff;
+  text-decoration: none;
+}
+.header_icon > .MuiSvgIcon-root {
+  margin: auto;
+  font-size: 30px;
+}
+a > .MuiSvgIcon-root {
+  margin: auto;
+  font-size: 30px;
+}
+.header_icon > p {
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: small;
+  display: none;
+  color: #fff;
+}
+a > p {
+  margin-top: 3px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: small;
+  display: none;
+  color: #fff;
+}
+.header_icon:hover > p {
+  display: inline;
+}
+a:hover > p {
+  display: inline;
+}
+
+.header > img {
+  object-fit: contain;
+  height: 50px;
+  width: 80px;
+}
+a.active > p {
+  display: inline;
+  letter-spacing: 1px;
+  color: rgb(0, 237, 130);
+}
+a.active > .MuiSvgIcon-root {
+  color: rgb(0, 237, 130);
+}
