@@ -28,14 +28,20 @@ export default function Login() {
     dispatch(fetchFacebookSignin({ history, dispatch }));
   };
   return (
-    <Paper sx={{ width: "40%", margin: "auto" }}>
-      <div style={{ margin: "auto", width: "350px", textAlign: "center" }}>
+    <Paper sx={{ width: { xl: "40%", xs: "100%" }, margin: "auto" }}>
+      <div
+        style={{
+          margin: "auto",
+          width: { xl: "40%", xs: "100%" },
+          textAlign: "center",
+        }}
+      >
         <h2>
           welcome to <span style={{ color: "rgb(0, 237, 130)" }}>hulu</span>
         </h2>
         <TextField
           sx={{
-            width: "100%",
+            width: "80%",
             margin: "40px 0",
           }}
           label="Email"
@@ -45,14 +51,15 @@ export default function Login() {
         />
         <TextField
           sx={{
-            width: "100%",
-            margin: "10px 0 20px",
+            width: "80%",
+            margin: "40px 0",
           }}
           label="Password"
           value={login.pass}
           name="pass"
           onChange={handleLogin}
         />
+        <br></br>
         <Button sx={{ margin: "10px" }} variant="outlined" onClick={onSubmit}>
           Login
         </Button>
@@ -66,7 +73,7 @@ export default function Login() {
           sign up with
         </Button>
         <Link style={{ display: "inline-block", width: "100%" }} to="/signup">
-          <h3 style={{ color: "red" }}>create account?</h3>
+          <h3 style={{ color: "red", marginBottom: "5px" }}>create account?</h3>
         </Link>
       </div>
     </Paper>

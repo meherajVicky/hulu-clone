@@ -68,13 +68,13 @@ export const fetchFacebookSignin = createAsyncThunk(
     const auth = getAuth(app);
     signInWithPopup(auth, provider)
       .then((re) => {
-        console.log(re);
         const user = re.user;
+        console.log(user?.reloadUserInfo);
         localStorage.setItem("token", user?.accessToken);
-        // const userDetails = {
-        //   email: user?.email,
-        // };
-        // localStorage.setItem("userDetails", JSON.stringify(userDetails));
+        const userDetails = {
+          all: user?.reloadUserInfo,
+        };
+        localStorage.setItem("userDetails", JSON.stringify(userDetails));
         // dispatch(userAction.setUser(user?.email));
         dispatch(userAction.setLogIn(true));
         history.push("/");

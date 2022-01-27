@@ -6,7 +6,7 @@ import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import "./header.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Account from "../../pages/account/Account";
 
 export default function Header() {
@@ -14,7 +14,7 @@ export default function Header() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
-    <div className="header" handleClose={handleClose}>
+    <div className="header">
       <div className="header_icons">
         {header.map((x, i) => (
           <NavLink to={x.path} key={i} activeClassName="active">
@@ -22,16 +22,18 @@ export default function Header() {
             <p>{x.title}</p>
           </NavLink>
         ))}
-        <div className="header_icon" onClick={handleOpen}>
-          <PersonOutlineIcon />
+        <div className="header_icon">
+          <PersonOutlineIcon onClick={handleOpen} />
           <p>Account</p>
           <Account open={open} handleClose={handleClose} />
         </div>
       </div>
-      <img
-        src="https://press.hulu.com/wp-content/uploads/2020/02/hulu-white.png"
-        alt="logo"
-      />
+      <Link to="/">
+        <img
+          src="https://press.hulu.com/wp-content/uploads/2020/02/hulu-white.png"
+          alt="logo"
+        />
+      </Link>
     </div>
   );
 }

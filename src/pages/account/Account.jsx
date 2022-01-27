@@ -59,7 +59,8 @@ export default function Account(props) {
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             hey
-            <span>{user}</span>
+            <span> {user}</span> welcome to{" "}
+            <i style={{ color: "rgb(0, 237, 130)" }}>hulu</i>
           </Typography>
           <Avatar
             alt="Remy Sharp"
@@ -75,7 +76,13 @@ export default function Account(props) {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography>
-          <Button onClick={handleLogout} onClose={props.handleClose}>
+          <Button
+            sx={{ margin: "10px" }}
+            variant="contained"
+            color="error"
+            onClick={handleLogout}
+            onClose={props.handleClose}
+          >
             logout
           </Button>
         </Box>

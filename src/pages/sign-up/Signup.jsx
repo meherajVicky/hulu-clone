@@ -23,11 +23,21 @@ export default function Signup() {
     setSignin({ email: "", pass: "" });
   };
   return (
-    <Paper sx={{ width: "500px", height: "400px", margin: "auto" }}>
-      <div style={{ margin: "auto", width: "350px", textAlign: "center" }}>
+    <Paper sx={{ width: { xl: "40%", xs: "100%" }, margin: "auto" }}>
+      <div
+        style={{
+          margin: "auto",
+          width: { xl: "40%", xs: "100%" },
+          textAlign: "center",
+        }}
+      >
+        <h2>
+          create your <span style={{ color: "rgb(0, 237, 130)" }}>hulu</span>{" "}
+          account
+        </h2>
         <TextField
           sx={{
-            width: "350px",
+            width: "80%",
             margin: "40px 0",
           }}
           label="Email"
@@ -37,15 +47,17 @@ export default function Signup() {
         />
         <TextField
           sx={{
-            width: "350px",
-            margin: "10px 0 20px",
+            width: "80%",
+            margin: "40px 0",
           }}
           label="Password"
           value={signin.pass}
           name="pass"
           onChange={handleSignin}
         />
-        <Button onClick={onSubmit}>Signin</Button>
+        <Button sx={{ margin: "10px" }} variant="contained" onClick={onSubmit}>
+          Signin
+        </Button>
       </div>
     </Paper>
   );

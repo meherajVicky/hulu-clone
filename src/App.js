@@ -1,22 +1,19 @@
+import { Suspense, lazy } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Redirect,
-  Route,
-  Switch,
-  BrowserRouter as Router,
-} from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Collection from "./pages/collections/Collection";
-import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
-import Search from "./pages/search/Search";
-import Signup from "./pages/sign-up/Signup";
-import Trending from "./pages/trending/Trending";
-import Verified from "./pages/verified/Verified";
 import { userAction } from "./redux/user";
 import Layout from "./ui/Layout";
 import "./App.css";
+import Loader from "./ui/Loader";
+const Collection = lazy(() => import("./pages/collections/Collection"));
+const Home = lazy(() => import("./pages/home/Home"));
+const Login = lazy(() => import("./pages/login/Login"));
+const Search = lazy(() => import("./pages/search/Search"));
+const Signup = lazy(() => import("./pages/sign-up/Signup"));
+const Trending = lazy(() => import("./pages/trending/Trending"));
+const Verified = lazy(() => import("./pages/verified/Verified"));
 
 const PrivateRoutes = ({ component: Component, ...rest }) => {
   const isLogin = useSelector((s) => s.user.isLogin);
@@ -35,15 +32,7 @@ const PrivateRoutes = ({ component: Component, ...rest }) => {
     />
   );
 };
-// const PrivateRoutes = ({ children, ...rest }) => {
-//   const isLogin = useSelector((s) => s.user.isLogin);
-//   return (
-//     <Route
-//       {...rest}
-//       render={() => (isLogin ? children : <Redirect to="/login" />)}
-//     />
-//   );
-// };
+
 const PublicRoutes = ({ component: Component, ...rest }) => {
   const isLogin = useSelector((s) => s.user.isLogin);
 
@@ -63,9 +52,7 @@ const PublicRoutes = ({ component: Component, ...rest }) => {
   );
 };
 function App() {
-  const isLogin = useSelector((s) => s.user.isLogin);
   const dispatch = useDispatch();
-  console.log(isLogin);
   useEffect(() => {
     if (localStorage.getItem("token") === null) {
       dispatch(userAction.setLogIn(false));
@@ -76,11 +63,8 @@ function App() {
 
   return (
     <>
-      {/* <Router> */}
-      {/* {isLogin ? ( */}
-      {/* <div className="app"> */}
       <Layout>
-        <Router>
+        <Suspense fallback={<Loader />}>
           <Switch>
             <PrivateRoutes path="/" exact>
               <Redirect to="/home" />
@@ -93,18 +77,8 @@ function App() {
             <PublicRoutes path="/login" exact component={Login} />
             <PublicRoutes path="/signup" exact component={Signup} />
           </Switch>
-        </Router>
+        </Suspense>
       </Layout>
-      {/* </div> */}
-      {/* ) : (
-          <div style={{ margin: "10%" }}> */}
-      {/* <Switch>
-          <PrivateRoutes1 path="/login" exact component={Login} />
-          <PrivateRoutes1 path="/signup" exact component={Signup} />
-        </Switch> */}
-      {/* </div>
-        )} */}
-      {/* </Router> */}
     </>
   );
 }

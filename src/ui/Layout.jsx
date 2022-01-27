@@ -5,7 +5,6 @@ import "./layout.css";
 
 export default function Layout(props) {
   const isLogin = useSelector((s) => s.user.isLogin);
-  console.log(isLogin);
   return (
     <>
       {isLogin ? (
